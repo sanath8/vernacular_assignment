@@ -17,7 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include, url
 from myapp import views
-
+"""
+Including URLconf present in myapp for 
+cleaner code and code reusability
+"""
 urlpatterns = [
     path('admin/', admin.site.urls, name = 'admin'),
     url(r'^validate/', include('myapp.urls')),

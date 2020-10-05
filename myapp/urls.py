@@ -17,6 +17,8 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
+    # Invokes the finite value validation API
     url(r'^finite_set', views.finite_set, name = 'finite_set'),
+    # Invokes the numerical value validation API
     url(r'^numeric_value', views.numeric_value, name = 'numeric_value'),
 ]
