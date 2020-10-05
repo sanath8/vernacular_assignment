@@ -1,6 +1,13 @@
 # Creation and set up of REST API's using Django and Docker
 
-[here](#Assumptions)
+## Index 
+
+###   I. [Assumptions](#Assumptions)
+###   II. [Building and Running the Image](#Building_and_Running_the_Image)
+###   III. [Making Post Requests](#Making_Post_Requests)
+###   IV. [Docker Image Size](#Docker_Image_Size)
+
+<br>
 
 ## Assumptions
 1) <b>2 separate</b> POST API's needs needs to be created, one for validation of finite set and the other for validation of numerical value. 
@@ -25,7 +32,7 @@
 6) ```support_multiple``` will pick <b>all the valid values</b> in the list as a ```List```, <b>ignoring the invalid values</b> in the list.
 7) ```invalid_trigger``` is raised in the response even if there is <b>one invalid value or no values</b> in the ```values``` list.
 
-## Building the Image and working with the app
+## Building and Running the Image
 
 ### 1) Building the image.
 Use the below command to build the application image from GitHub repository.<br>
@@ -39,4 +46,29 @@ Use the below command to run the docker image once it is built<br>
 
 <b>Note</b>: In case of any <b>permission</b> issues in linux, please run the above commands with ```sudo```.<br>
 
-        
+## Making Post Requests
+
+### 1) POST API to validate a slot with a finite set of values.
+
+To make a POST request to validate a slot with a finite set of values use the below url: <br>
+```http://localhost:8000/validate/finite_set```<br>
+<br>
+A Sample request and response using postman for validating finite set values is shown below
+![Screenshot from 2020-10-05 14-27-04](https://user-images.githubusercontent.com/21198781/95061442-3cc43300-0719-11eb-92db-fedca0f3a621.png)
+
+
+### 2) POST API to validate a slot with numeric values.
+
+To make a POST request to validate a slot with a numeric values use the below url: <br>
+```http://localhost:8000/validate/numeric_value```<br>
+<br>
+A Sample request and response using postman for validating numeric values is shown below
+![Screenshot from 2020-10-05 14-54-46](https://user-images.githubusercontent.com/21198781/95062904-3767e800-071b-11eb-9d67-52cdaedfbd99.png)
+
+<b>Note</b>: Please use the desktop version of Postman to avoid CORS error.
+
+## Docker Image Size
+
+The Docker Image Size is ```927 MB```<br>
+
+![Screenshot from 2020-10-05 15-03-38](https://user-images.githubusercontent.com/21198781/95063656-3edbc100-071c-11eb-8215-bfe7e627865e.png)
