@@ -1,4 +1,3 @@
-# Create your views here.
 from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -6,8 +5,17 @@ from rest_framework.response import Response
 import json
 from .src.validate_finite_set import Validate_Finite_Set
 from .src.validate_numeric_value import Validate_Numeric_Value
+"""
+Both the POST API's given in the problem statements are implemented below
+The required parameters are extracted from the input json accordingly and
+the respective methods are called for processing.
+"""
+
 @api_view(['POST'])
 def finite_set(request):
+    """
+    1. POST API to validate Finite Value Set
+    """
     data             = json.loads(request.body.decode("utf-8"))
     values           = data.get("values")
     supported_values = data.get("supported_values")
@@ -18,10 +26,13 @@ def finite_set(request):
     validator        = Validate_Finite_Set()
     resp             = validator.validate_finite_values_entity(values, supported_values, invalid_trigger, key, support_multiple, pick_first)
 
-    return Response(resp, status=status.HTTP_201_CREATED)
+    return Response(resp, status=status.HTTP_200_OK)
 
 @api_view(['POST'])
 def numeric_value(request):
+    """
+    2. POST API to validate Numerical Value
+    """
     data             = json.loads(request.body.decode("utf-8"))
     values           = data.get("values")
     invalid_trigger  = data.get("invalid_trigger")
@@ -33,4 +44,4 @@ def numeric_value(request):
     validator        = Validate_Numeric_Value()
     resp             = validator.validate_numeric_entity(values, invalid_trigger, key, support_multiple, pick_first, constraint, var_name)
 
-    return Response(resp, status=status.HTTP_201_CREATED)
+    return Response(resp, status=status.HTTP_200_OK)

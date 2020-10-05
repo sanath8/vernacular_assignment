@@ -1,6 +1,9 @@
 from .validate import *
 
 class Validate_Numeric_Value(Validate):
+    """
+    Subclass to validate if the numeric values obey the given constraint and extract them
+    """
     def validate_numeric_entity(self,   values: List[Dict], invalid_trigger: str = None, key: str = None,
                             support_multiple: bool = True, pick_first: bool = False, constraint=None, var_name=None,
                             **kwargs) -> SlotValidationResult:
@@ -33,9 +36,9 @@ class Validate_Numeric_Value(Validate):
             self.set_part_filled(False)
         else:
             for each_value in values:
-                if constraint != None:
-                    mod_exp = constraint.replace(var_name, str(each_value["value"]))
-                    if eval(mod_exp):
+                if constraint:
+                    mod_exp = constraint.replace(var_name, str(each_value["value"])) # Replace variable with input value
+                    if eval(mod_exp): # Since it is given that the contraint follows python syntax, it can be evaluated using eval() method
                         valid_values.append(each_value["value"])
                     else:
                         self.set_trigger(invalid_trigger)
