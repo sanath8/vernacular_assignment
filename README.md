@@ -3,7 +3,7 @@
 ## Index 
 
 ###   I. [Assumptions](#Assumptions)
-###   II. [Building and Running the Image](#Building_and_Running_the_Image)
+###   II. [Building and Running the Image](#Building%%and%%Running%%the%%Image)
 ###   III. [Making Post Requests](#Making_Post_Requests)
 ###   IV. [Docker Image Size](#Docker_Image_Size)
 
