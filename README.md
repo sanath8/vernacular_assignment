@@ -24,4 +24,3 @@
 5) ```pick_first``` will pick the <b>first valid value</b> in the ```values``` list, <b>ignoring the invalid values</b> in the list.
 6) ```support_multiple``` will pick <b>all the valid values</b> in the list, <b>ignoring the invalid values</b> in the list.
 7) ```invalid_trigger``` is raised in the response even if there is <b>one invalid value or no values</b> in the ```values``` list.
-
