@@ -42,7 +42,7 @@ class Validate:
             if support_multiple or (not support_multiple and not pick_first):
                 self.parameters = {key : values} # If support_multiple is true, list of all valid values are sent in response
             else:
-                self.parameters = {key : str(values[0])} # If pick_first is true, the first valid value is sent as a string in response
+                self.parameters = {key : values[0]} # If pick_first is true, the first valid value is sent as a response
 
     def get_filled(self) -> bool:
         """

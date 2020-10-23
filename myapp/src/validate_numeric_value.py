@@ -29,6 +29,9 @@ class Validate_Numeric_Value(Validate):
         :return: a tuple of (filled, partially_filled, trigger, params)
         """
         valid_values = []
+
+        if not values: # In case values list is not passed in request
+            values = []
         
         if len(values) == 0:
             self.set_trigger(invalid_trigger)
