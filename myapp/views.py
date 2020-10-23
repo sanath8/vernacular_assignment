@@ -24,7 +24,14 @@ def finite_set(request):
     support_multiple = data.get("support_multiple")
     pick_first       = data.get("pick_first")
     validator        = Validate_Finite_Set()
-    resp             = validator.validate_finite_values_entity(values, supported_values, invalid_trigger, key, support_multiple, pick_first)
+    filled, partially_filled, trigger, parameters = validator.validate_finite_values_entity(values, supported_values, invalid_trigger, key, support_multiple, pick_first)
+    resp	     = {
+                           "filled" : filled,
+                           "partially_filled" : partially_filled,
+                           "trigger" : trigger,
+                           "parameters" : parameters
+                       }
+
 
     return Response(resp, status=status.HTTP_200_OK)
 
@@ -42,6 +49,12 @@ def numeric_value(request):
     constraint       = data.get("constraint")
     var_name         = data.get("var_name")
     validator        = Validate_Numeric_Value()
-    resp             = validator.validate_numeric_entity(values, invalid_trigger, key, support_multiple, pick_first, constraint, var_name)
+    filled, partially_filled, trigger, parameters = validator.validate_numeric_entity(values, invalid_trigger, key, support_multiple, pick_first, constraint, var_name)
+    resp	     = {
+                           "filled" : filled,
+                           "partially_filled" : partially_filled,
+                           "trigger" : trigger,
+                           "parameters" : parameters
+                       }
 
     return Response(resp, status=status.HTTP_200_OK)

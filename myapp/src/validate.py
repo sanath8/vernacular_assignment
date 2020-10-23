@@ -73,10 +73,10 @@ class Validate:
         """
         The response to be sent as per the given format
         """
-        return {
-                    "filled" : self.get_filled(),
-                    "partially_filled" : self.get_part_filled(),
-                    "trigger" : self.get_trigger(),
-                    "parameters" : self.get_parameters()
-                }
+        return (
+	        self.get_filled(),
+                self.get_part_filled(),
+                self.get_trigger(),
+                self.get_parameters()
+                )
 
