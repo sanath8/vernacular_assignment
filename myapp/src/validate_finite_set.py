@@ -28,7 +28,6 @@ class Validate_Finite_Set(Validate):
         if not values: # In case the values list is not passed in request
             values = []
 
-        supported_values = [word.upper() for word in supported_values] # Making the comparion case insensitive
 
         if len(values) == 0:
             self.set_trigger(invalid_trigger)
@@ -37,7 +36,7 @@ class Validate_Finite_Set(Validate):
         else:
             supported_values_set = set(supported_values) # Set provides faster data acces.
             for each_value in values:
-                if each_value["value"].upper() in supported_values_set:
+                if each_value["value"] in supported_values_set:
                     valid_values.append(each_value["value"].upper())
                 else:
                     self.set_trigger(invalid_trigger)
