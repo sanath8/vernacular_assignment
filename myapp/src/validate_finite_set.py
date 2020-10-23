@@ -21,6 +21,15 @@ class Validate_Finite_Set(Validate):
         """
         
         valid_values = [] # List to keep track of the valid values among the given values
+       
+        if not supported_values: # In case the value of supported_values is None
+            supported_values = []
+
+        if not values: # In case the values list is not passed in request
+            values = []
+
+        supported_values = [word.upper() for word in supported_values] # Making the comparion case insensitive
+
         if len(values) == 0:
             self.set_trigger(invalid_trigger)
             self.set_filled(False)
@@ -28,12 +37,14 @@ class Validate_Finite_Set(Validate):
         else:
             supported_values_set = set(supported_values) # Set provides faster data acces.
             for each_value in values:
-                if each_value["value"] in supported_values_set:
-                    valid_values.append(each_value["value"])
+                if each_value["value"].upper() in supported_values_set:
+                    valid_values.append(each_value["value"].upper())
                 else:
                     self.set_trigger(invalid_trigger)
                     self.set_filled(False)
                     self.set_part_filled(True)
+                    valid_values = []
+                    break
             self.set_parameters(valid_values, key, support_multiple, pick_first)
         
         return self.get_response() 
